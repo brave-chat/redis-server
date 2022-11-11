@@ -21,24 +21,16 @@ from starlette.websockets import WebSocketState
 
 
 logger = logging.getLogger(__name__)
-
-if Settings().DEBUG == True:
-    chat_app = FastAPI(
-        docs_url="/docs",
-        redoc_url="/redocs",
-        title="Realtime Chat App",
-        description="Realtime Chat App Backend",
-        version="1.0",
-        openapi_url="/api/v1/openapi.json",
-    )
-else:
-    chat_app = FastAPI(
-        debug=True,
-        title="API",
-        openapi_url=None,
-        docs_url=None,
-        redoc_url=None,
-    )
+print(Settings())
+chat_app = FastAPI(
+    debug=True,
+    docs_url="/docs",
+    redoc_url="/redocs",
+    title="Realtime Chat App",
+    description="Realtime Chat App Backend",
+    version="1.0",
+    openapi_url="/api/v1/openapi.json",
+)
 
 origins = [
     "http://127.0.0.1:8000",

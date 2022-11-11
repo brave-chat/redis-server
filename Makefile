@@ -1,22 +1,3 @@
-SHELL := /bin/bash
-
-# Variables definitions
-# -----------------------------------------------------------------------------
-
-ifeq ($(TIMEOUT),)
-TIMEOUT := 60
-endif
-
-ifeq ($(MODEL_PATH),)
-MODEL_PATH := ./ml/model/
-endif
-
-ifeq ($(MODEL_NAME),)
-MODEL_NAME := model.pkl
-endif
-
-# Target section and Global definitions
-# -----------------------------------------------------------------------------
 .PHONY: all clean test install run deploy down
 
 all: clean test install run deploy down
@@ -30,7 +11,7 @@ install: generate_dot_env
 	poetry install
 
 run:
-	PYTHONPATH=app/ poetry run server
+	poetry run server
 
 up: generate_dot_env
 	docker-compose build
